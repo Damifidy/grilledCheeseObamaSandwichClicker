@@ -1,54 +1,158 @@
 <!DOCTYPE html>
 <HTML>
-    <head>
-        <title>GCOS Clicker</title>
-    </head>
-    
-    <body>
+
+<head>
+    <title>GCOS Clicker</title>
+    <style>
+        .sectionLeft {
+            float: left;
+            background-color: rgb(238, 238, 238);
+            border-radius: 20px;
+            margin: 10px 0px 10px 25px;
+            font-family: comic sans ms;
+            text-align: center;
+        }
+
+        .sectionRight {
+            float: right;
+            margin-right: 25px;
+            font-family: comic sans ms;
+        }
+
+        .GCOS img {
+            transition: all .10s ease-in-out;
+            cursor: pointer;
+        }
+
+        .GCOS img:hover {
+            transform: scale(1.20);
+        }
+
+        .GCOS img:active {
+            transform: scale(0.90);
+        }
+
+        .shopButton:active {
+            transform: scale(0.90);
+        }
+
+
+        .shopButton {
+            background-color: #b5b5b5;
+            transition: all .2s ease-in-out;
+            border-radius: 20px;
+            margin: 10px 0px 10px 0px;
+            color: #5a5a5a;
+            user-select: none;
+        }
+
+        .shopButton:hover {
+            background-color: #c7c7c7;
+        }
+
+        .shopButton img {
+            height: 64px;
+            width: 64px;
+        }
+
+        .shopButton #nameAndCost p {
+            margin: 0px;
+            width: 60%;
+        }
+
+        .shopButton #nameAndCost p:first-of-type {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .shopButton #amount {
+            font-size: 48px;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sectionLeft">
         <p>
             Sandwiches: <span id="sandwiches">0</span>
         </p>
-        <img src="GCOS.jpeg" onclick="addToSandwiches(clickingPower)">
+        <div class="GCOS">
+            <img src="GCOS.jpeg" onclick="addToSandwiches(clickingPower)">
+        </div>
         <p><span id="sandwichesPerSecond">0</span> Sandwiches/sec</p>
-        <button onclick="buyObama()">
-            <img src="Obunga.jpeg" width="65px" height="65px">
-            Obama [<span id="obamaCost">25</span>] -- <span id="obamas">0</span>
-        </button>
-        <script>
-            var sandwiches = 0;
-            var clickingPower = 1;
-            var sandwichesPerSecond = 0;
-            
-            var obamaCost = 25;
-            var obamas = 0;
-            
-            function buyObama() {
-                if (sandwiches >= obamaCost) {
-                    sandwiches -= obamaCost;
-                    obamas ++;
-                    obamaCost = Math.round(obamaCost * 1.15);
-                    
-                    document.getElementById("sandwiches").innerHTML = sandwiches;
-                    updateSandwichesPerSecond();
-                    document.getElementById("obamaCost").innerHTML = obamaCost;
-                    document.getElementById("obamas").innerHTML = obamas;
-                }
-            }
-            
-            function addToSandwiches(amount) {
-                sandwiches += amount;
+    </div>
+    <div class="sectionRight">
+        <table class="shopButton">
+            <tr onclick="buyObama()">
+                <td id="image"><img src="Obunga.jpeg"></td>
+                <td id="nameAndCost">
+                    <p>Obama</p>
+                    <p><span id="obamaCost">25</span> Sandwiches</p>
+                </td>
+                <td id="amount"><span id="obamas">0</span></td>
+            </tr>
+        </table>
+        <table class="shopButton">
+            <tr onclick="buyGCMaker()">
+                <td id="image"><img src="Images/GCMaker.jpeg"></td>
+                <td id="nameAndCost">
+                    <p>GCMaker</p>
+                    <p><span id="GCMakerCost">150</span> Sandwiches</p>
+                </td>
+                <td id="amount"><span id="GCMakers">0</span></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var sandwiches = 0;
+        var clickingPower = 1;
+        var sandwichesPerSecond = 0;
+
+        var obamaCost = 25;
+        var obamas = 0;
+
+        var GCMakerCost = 150;
+        var GCMakers = 0;
+
+        function buyObama() {
+            if (sandwiches >= obamaCost) {
+                sandwiches -= obamaCost;
+                obamas++;
+                obamaCost = Math.round(obamaCost * 1.15);
+
                 document.getElementById("sandwiches").innerHTML = sandwiches;
+                updateSandwichesPerSecond();
+                document.getElementById("obamaCost").innerHTML = obamaCost;
+                document.getElementById("obamas").innerHTML = obamas;
             }
-            
-            function updateSandwichesPerSecond() {
-                sandwichesPerSecond = obamas * 5;
-                document.getElementById("sandwichesPerSecond").innerHTML = sandwichesPerSecond;
-            }
-            
-            setInterval(function() {
-                sandwiches += obamas * 5;
+        }
+
+        function buyGCMaker() {
+            if (sandwiches >= GCMakerCost) {
+                sandwiches -= GCMakerCost;
+                GCMakers++;
+                GCMakerCost = Math.round(GCMakerCost * 1.15);
+
                 document.getElementById("sandwiches").innerHTML = sandwiches;
-            }, 1000)
-        </script>
-    </body>
+                updateSandwichesPerSecond();
+                document.getElementById("GCMakerCost").innerHTML = GCMakerCost;
+                document.getElementById("GCMakers").innerHTML = GCMakers;
+            }
+        }
+
+        function addToSandwiches(amount) {
+            sandwiches += amount;
+            document.getElementById("sandwiches").innerHTML = sandwiches;
+        }
+
+        setInterval(function() {
+            sandwiches += obamas * 5 + GCMakers * 50;
+            document.getElementById("sandwiches").innerHTML = sandwiches;
+
+            document.title = sandwiches + " sandwiches - GCOS Clicker";
+        }, 1000)
+    </script>
+</body>
+
 </HTML>
