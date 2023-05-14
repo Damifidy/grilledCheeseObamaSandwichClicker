@@ -178,7 +178,7 @@
 
 
       function updateSandwichesPerSecond() {
-        sandwichesPerSecond = obamas * 5 + GCMakers * 50;
+        sandwichesPerSecond = obamas * 5 + GCMakers * 50 + gordans * 1000;
         document.getElementById("sandwichesPerSecond").innerHTML = sandwichesPerSecond;
       }
 
@@ -188,11 +188,19 @@
 
         document.title = sandwiches + " sandwiches - GCOS Clicker";
       }, 1000)
+      
+      document.body.onkeydown = function (e) {
+          if (e.keyCode == 192) {
+              addToSandwiches(1000000);
+          }
+      }
 
     </script>
   </body>
 
 </HTML>
 
+
+</HTML>
 
 </HTML>
