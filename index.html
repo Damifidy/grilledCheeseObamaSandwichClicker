@@ -117,6 +117,16 @@
           <td id="amount"><span id="gordans">0</span></td>
         </tr>
       </table>
+      <table class="shopButton">
+        <tr onclick="buyPC()">
+          <td id="image"><img src="PC.jpeg"></td>
+          <td id="nameAndCost">
+            <p>Provolone Cheese</p>
+            <p><span id="PCCost">40000</span> Sandwiches</p>
+          </td>
+          <td id="amount"><span id="PCs">0</span></td>
+        </tr>
+      </table>
     </div>
     <script>
       var sandwiches = 0;
@@ -131,6 +141,9 @@
 
       var gordanCost = 2000;
       var gordans = 0;
+
+      var PCCost = 40000;
+      var PCs = 0;
 
       function buyObama() {
         if (sandwiches >= obamaCost) {
@@ -171,6 +184,19 @@
         }
       }
 
+      function buyPC() {
+        if (sandwiches >= PCCost) {
+          sandwiches -= PCCost;
+          PCs++;
+          PCCost = Math.round(PCCost * 1.15);
+
+          document.getElementById("sandwiches").innerHTML = sandwiches;
+          updateSandwichesPerSecond();
+          document.getElementById("PCCost").innerHTML = PCCost;
+          document.getElementById("PCs").innerHTML = PCs;
+        }
+      }
+
       function addToSandwiches(amount) {
         sandwiches += amount;
         document.getElementById("sandwiches").innerHTML = sandwiches;
@@ -178,12 +204,12 @@
 
 
       function updateSandwichesPerSecond() {
-        sandwichesPerSecond = obamas * 5 + GCMakers * 50 + gordans * 1000;
+        sandwichesPerSecond = obamas * 5 + GCMakers * 50 + gordans * 1000 + PCs * 10000;
         document.getElementById("sandwichesPerSecond").innerHTML = sandwichesPerSecond;
       }
 
       setInterval(function() {
-        sandwiches += obamas * 5 + GCMakers * 50 + gordans * 1000;
+        sandwiches += obamas * 5 + GCMakers * 50 + gordans * 1000 + PCs * 10000;
         document.getElementById("sandwiches").innerHTML = sandwiches;
 
         document.title = sandwiches + " sandwiches - GCOS Clicker";
