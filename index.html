@@ -217,16 +217,25 @@
       
       document.body.onkeydown = function (e) {
           if (e.keyCode == 192) {
-              addToSandwiches(1000000);
+            let upgradeToAdd = prompt("Enter upgrade you want to add:", "<type here>");
+            if (upgradeToAdd == "Obama") {
+              obamas++;
+              document.getElementById("obamas").innerHTML = obamas;
+            } else if (upgradeToAdd == "GCMaker") {
+              GCMakers++;
+              document.getElementById("GCMakers").innerHTML = GCMakers;
+            } else if (upgradeToAdd == "Gordan") {
+              gordans++;
+              document.getElementById("gordans").innerHTML = gordans;
+            } else if (upgradeToAdd == "Provolone") {
+              PCs++;
+              document.getElementById("PCs").innerHTML = PCs;
+            } else {alert("Invalid upgrade!");}
+            updateSandwichesPerSecond();
           }
       }
 
     </script>
   </body>
-
-</HTML>
-
-
-</HTML>
 
 </HTML>
