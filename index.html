@@ -217,17 +217,17 @@
       
       document.body.onkeydown = function (e) {
           if (e.keyCode == 192) {
-            let upgradeToAdd = prompt("Enter upgrade you want to add:", "<type here>");
-            if (upgradeToAdd == "Obama") {
+            let upgradeToAdd = toLowerCase(prompt("Enter upgrade you want to add:", "<type here>"));
+            if (upgradeToAdd == "obama") {
               obamas++;
               document.getElementById("obamas").innerHTML = obamas;
-            } else if (upgradeToAdd == "GCMaker") {
+            } else if (upgradeToAdd == "gcmaker") {
               GCMakers++;
               document.getElementById("GCMakers").innerHTML = GCMakers;
-            } else if (upgradeToAdd == "Gordan") {
+            } else if (upgradeToAdd == "gordan") {
               gordans++;
               document.getElementById("gordans").innerHTML = gordans;
-            } else if (upgradeToAdd == "Provolone") {
+            } else if (upgradeToAdd == "provolone") {
               PCs++;
               document.getElementById("PCs").innerHTML = PCs;
             } else {alert("Invalid upgrade!");}
