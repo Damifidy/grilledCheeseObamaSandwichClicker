@@ -217,7 +217,7 @@
       
       document.body.onkeydown = function (e) {
           if (e.keyCode == 192) {
-            let upgradeToAdd = toLowerCase(prompt("Enter upgrade you want to add:", "<type here>"));
+            let upgradeToAdd = prompt("Enter upgrade you want to add:", "<type here>").toLowerCase();
             if (upgradeToAdd == "obama") {
               obamas++;
               document.getElementById("obamas").innerHTML = obamas;
